@@ -77,3 +77,12 @@ int main() {
 
     return 0;
 }
+
+// Time Complexity
+// Best Case: O(n log n)
+// Average Case: O(n log n)
+// Worst Case: O(n^2)
+
+// Space Complexity
+// In-place sort	O(1) extra (excluding recursion)
+// Recursion stack	O(log n) in best/avg case, O(n) in worst case
