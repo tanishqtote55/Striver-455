@@ -25,9 +25,12 @@ using namespace std;
 class Solution {
 public:
     // Brute Force Approach
-    // Sort then Find Second largest element in the remaining array using loop with break statement {1, 2, 5, 7, 7}
+    // Sort then Find Second largest element in the remaining array using loop with break statement {1, 2, 5, 7, 7} => O(NlogN + N)
 
-    // One for loop for both largest and second largest as well
+    // Better Approach
+    // Two For Loops one for largest and other for second largest => O(2N)
+
+    // One for loop for both largest and second largest as well => O(N)
     int secondLargestElement(vector<int>& nums) {
         //your code goes here
         if(nums.size() < 2) return -1;
