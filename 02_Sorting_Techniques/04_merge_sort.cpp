@@ -86,3 +86,11 @@ int main() {
 
     return 0;
 }
+
+// Time Complexity
+// Best Case: O(n log n)
+// Average Case: O(n log n)
+// Worst Case: O(n log n)
+
+// Space Complexity
+// O(N) : Worst Case
