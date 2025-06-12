@@ -28,11 +28,24 @@ using namespace std;
 
 class Solution {
 public:
+    // vector<int> selectionSort(vector<int>& nums) {
+    //     for(int i = 0; i <= nums.size() - 2; i++){
+    //         int mini = i;
+    //         for(int j = i; j <= nums.size() - 1; j++){
+    //             if(nums[j] < nums[mini]){
+    //                 mini = j;
+    //             }
+    //         }
+    //         swap(nums[i], nums[mini]);
+    //     }
+    //     return nums;
+    // }
     vector<int> selectionSort(vector<int>& nums) {
-        for(int i = 0; i <= nums.size() - 2; i++){
+        int n = nums.size();
+        for (int i = 0; i < n - 1; i++) {
             int mini = i;
-            for(int j = i; j <= nums.size() - 1; j++){
-                if(nums[j] < nums[mini]){
+            for (int j = i + 1; j < n; j++) {
+                if (nums[j] < nums[mini]) {
                     mini = j;
                 }
             }
