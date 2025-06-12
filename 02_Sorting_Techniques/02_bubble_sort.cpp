@@ -77,3 +77,7 @@ int main() {
 
     return 0;
 }
+
+// Time complexity
+// O(n^2) : Worst, Average
+// O(n) : Best
