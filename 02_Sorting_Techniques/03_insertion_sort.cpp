@@ -61,3 +61,7 @@ int main() {
 
     return 0;
 }
+
+// Time Complexity
+// O(n^2) : Worst Case, Average Case
+// O(n) : Best Case
