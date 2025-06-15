@@ -122,3 +122,12 @@ int main() {
     cout << result << endl;
     return 0;
 }
+
+// ✅ We use Divide and Conquer.
+// ✅ At each merge step:
+
+// We first count reverse pairs in O(n) by using two pointers.
+
+// Then we merge the two halves in O(n).
+
+// ✅ So total complexity is O(n log n).
