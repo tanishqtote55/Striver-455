@@ -23,6 +23,39 @@ using namespace std;
 
 class Solution {
 public:
+
+    int kthElement(vector<int> &a, vector<int>& b, int m, int n, int k) {
+        int ele = -1;
+        int cnt = 0; //counter
+        //apply the merge step:
+        int i = 0, j = 0;
+        while (i < m && j < n) {
+            if (a[i] < b[j]) {
+                if (cnt == k - 1) ele = a[i];
+                cnt++;
+                i++;
+            }
+            else {
+                if (cnt == k - 1) ele = b[j];
+                cnt++;
+                j++;
+            }
+        }
+
+        //copy the left-out elements:
+        while (i < m) {
+            if (cnt == k - 1) ele = a[i];
+            cnt++;
+            i++;
+        }
+        while (j < n) {
+            if (cnt == k - 1) ele = b[j];
+            cnt++;
+            j++;
+        }
+        return ele;
+    }
+    
     int kthElement(vector<int> &a, vector<int>& b, int k) {
         int n = a.size(), m = b.size();
 
