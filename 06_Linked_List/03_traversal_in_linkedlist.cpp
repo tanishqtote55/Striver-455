@@ -44,3 +44,8 @@ int main(){
     
     return 0;
 }
+
+// Time Complexity: 
+// Since we are iterating over the entire list,  time complexity is O(N).
+// Space Complexity:
+// We are not using any extra space, thus space complexity is O(1) or constant.
