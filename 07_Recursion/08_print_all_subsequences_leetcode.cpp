@@ -66,13 +66,33 @@ public:
         backtrack(0, nums, current, result);
         return result;
     }
+
+    void printF(int index, vector<int> &ds, vector<int> arr, int n){
+        if(index == n){
+            for(auto it: ds){
+                cout << it << " ";
+            }
+            cout << endl;
+            return;
+        }
+        // take or pick the particular index into the subsequence
+        ds.push_back(arr[index]);
+        printF(index + 1, ds, arr, n);
+        ds.pop_back();
+        // not take or not pick the particular index into the subsequence
+        printF(index + 1, ds, arr, n);
+
+    }
 };
 
 // Main function to demonstrate usage
 int main() {
     Solution sol;
     vector<int> nums = {1, 2, 3};
-
+    int n = 3;
+    vector<int> ds;
+    sol.printF(0, ds, nums, n);
+    
     vector<vector<int>> allSubsets = sol.subsets(nums);
 
     cout << "All subsets:\n";
