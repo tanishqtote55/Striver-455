@@ -26,6 +26,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(2^n * n) Space Complexity: O(1)
     vector<vector<int>> subsets(vector<int>& nums) {
         int n = nums.size();
         int total = 1 << n;  // Total subsets = 2^n
@@ -60,6 +61,7 @@ public:
         }
     }
 
+    // Time Complexity: O(2^n) Space Complexity: O(n), recursion stack.
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> result;
         vector<int> current;
