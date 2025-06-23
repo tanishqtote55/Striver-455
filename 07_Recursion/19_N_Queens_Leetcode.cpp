@@ -126,3 +126,7 @@ int main() {
 
     return 0;
 }
+
+// Time Complexity: Exponential in nature since we are trying out all ways, to be precise it is O(N! * N).
+
+// Space Complexity: O(N)
