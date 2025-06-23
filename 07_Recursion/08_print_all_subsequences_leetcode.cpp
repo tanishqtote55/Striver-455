@@ -61,7 +61,6 @@ public:
         }
     }
 
-    // Time Complexity: O(2^n) Space Complexity: O(n), recursion stack.
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> result;
         vector<int> current;
@@ -69,6 +68,7 @@ public:
         return result;
     }
 
+    // Time Complexity: O(2^n) Space Complexity: O(n), recursion stack.
     void printF(int index, vector<int> &ds, vector<int> arr, int n){
         if(index == n){
             for(auto it: ds){
