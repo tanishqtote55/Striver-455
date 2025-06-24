@@ -21,6 +21,7 @@ void primeFactors(int n) {
         cout << n << " ";
 }
 
+// TC O(sqrt(N) * logN)
 void uniquePrimeFactors(int n) {
     // 1. Check if 2 is a prime factor
     if (n % 2 == 0) {
