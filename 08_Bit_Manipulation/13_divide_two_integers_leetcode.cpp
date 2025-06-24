@@ -80,3 +80,7 @@ int main() {
 
     return 0;
 }
+
+// Approach	                Time Complexity	            Remarks
+// Naive (Subtract)	        O(N)	                    Very slow for large N
+// Bit-Shift (Efficient)	O(log N)	                Optimal and scalable
