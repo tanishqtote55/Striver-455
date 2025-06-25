@@ -1,0 +1,13 @@
+From → To	        Scan Direction	Stack Stores	        Operation Logic
+
+Infix → Postfix	    Left to Right	Operators	            Output operands immediately; push operators; pop on lower/equal precedence(except ^)
+
+Infix → Prefix	    Right to Left	Operators	            Reverse infix, swap brackets, convert like postfix, then reverse result
+
+Postfix → Infix	    Left to Right	Strings(partial infix)	On operator, pop top1 and then top2; result = (top2 op top1)
+
+Prefix → Infix	    Right to Left	Strings(partial infix)	On operator, pop top1 and then top2; result = (top1 op top2)
+
+Postfix → Prefix	Left to Right	Strings(prefix parts)	On operator, pop top1 and then top2; result = op + top2 + top1
+
+Prefix → Postfix	Right to Left	Strings(postfix parts)	On operator, pop top1 and then top2; result = top1 + top2 + op
