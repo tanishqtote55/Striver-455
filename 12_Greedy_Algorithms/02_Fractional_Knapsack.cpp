@@ -67,3 +67,6 @@ int main() {
 
     return 0;
 }
+
+// Time: O(N log N) — for sorting.
+// Space: O(1) extra (besides input).
