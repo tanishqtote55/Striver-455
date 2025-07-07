@@ -69,3 +69,7 @@ int main() {
 
     return 0;
 }
+
+// Time: O(n)
+
+// Space: O(1) – no extra stack or recursion, uses threaded tree temporarily
