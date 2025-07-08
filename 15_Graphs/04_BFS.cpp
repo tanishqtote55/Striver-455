@@ -72,3 +72,15 @@ int main() {
 
     return 0;
 }
+
+// Time and Space Complexity of BFS in Graph
+// Time Complexity:
+// O(V + E)
+// We visit each vertex once: O(V)
+// For each vertex, we traverse its adjacency list: O(E)
+
+// Space Complexity:
+// O(V)
+// visited[] array of size V
+// queue can store up to V nodes in worst case
+// result vector stores traversal order of up to V nodes
