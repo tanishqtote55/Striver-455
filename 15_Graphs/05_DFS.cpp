@@ -64,3 +64,16 @@ int main() {
 
     return 0;
 }
+
+// Time Complexity of DFS:
+// O(V + E)
+// V = Number of vertices
+// E = Number of edges
+// DFS visits every vertex and every edge once in the worst case (especially in adjacency list representation).
+
+// Space Complexity of DFS:
+// O(V)
+// This includes:
+// Visited array → O(V)
+// Recursion stack (in case of recursive DFS) → up to O(V) in the worst case (for a graph like a chain/tree).
+
