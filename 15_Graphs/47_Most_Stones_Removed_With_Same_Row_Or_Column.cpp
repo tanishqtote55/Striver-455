@@ -40,64 +40,57 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 using namespace std;
-
-class DisjointSet {
-    vector<int> parent;
-public:
-    DisjointSet(int n) {
-        parent.resize(n);
-        for (int i = 0; i < n; i++) parent[i] = i;
-    }
-
-    int findParent(int u) {
-        if (u == parent[u]) return u;
-        return parent[u] = findParent(parent[u]); // Path compression
-    }
-
-    void unionByParent(int u, int v) {
-        int pu = findParent(u);
-        int pv = findParent(v);
-        if (pu != pv) {
-            parent[pu] = pv;
-        }
-    }
-
-    int countUniqueParents() {
-        int count = 0;
-        for (int i = 0; i < parent.size(); i++) {
-            if (i == parent[i]) count++;
-        }
-        return count;
-    }
-
-    vector<int>& getParents() {
-        return parent;
-    }
-};
 
 class Solution {
 public:
+    class DisjointSet {
+    public:
+        vector<int> parent;
+        DisjointSet(int n) {
+            parent.resize(n);
+            for (int i = 0; i < n; ++i)
+                parent[i] = i;
+        }
+
+        int find(int u) {
+            if (u == parent[u])
+                return u;
+            return parent[u] = find(parent[u]);
+        }
+
+        void unionSet(int u, int v) {
+            int pu = find(u);
+            int pv = find(v);
+            if (pu != pv)
+                parent[pu] = pv;
+        }
+    };
+
     int removeStones(vector<vector<int>>& stones) {
         int n = stones.size();
-        DisjointSet ds(20000);  // Enough size: 0-9999 for x, 10000-19999 for y
+        DisjointSet ds(n);
 
-        for (const auto& stone : stones) {
-            int row = stone[0];
-            int col = stone[1] + 10000;  // Offset y to avoid collision with x
-            ds.unionByParent(row, col);
+        // Build connections between stones that share row or column
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                    ds.unionSet(i, j);
+                }
+            }
         }
 
-        unordered_map<int, int> uniqueRoots;
-        for (const auto& stone : stones) {
-            int root = ds.findParent(stone[0]);
-            uniqueRoots[root]++;
+        // Count number of connected components
+        unordered_set<int> uniqueParents;
+        for (int i = 0; i < n; ++i) {
+            uniqueParents.insert(ds.find(i));
         }
 
-        int numComponents = uniqueRoots.size();
-        return n - numComponents;
+        return n - uniqueParents.size();
     }
 };
+
 
 int main() {
     Solution sol;
