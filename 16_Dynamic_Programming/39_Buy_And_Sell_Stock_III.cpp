@@ -116,6 +116,28 @@ public:
         // 3. Space Optimized
         // return spaceOptimized(prices);
     }
+
+    // Tabulation with dp[n][4]
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> dp(n + 1, vector<int>(4, 0));
+
+        for (int i = n - 1; i >= 0; --i) {
+            for (int trans = 0; trans < 4; ++trans) {
+                if (trans % 2 == 0) {
+                    // Buy allowed
+                    dp[i][trans] = max(-prices[i] + dp[i + 1][trans + 1],  // take (buy)
+                                        dp[i + 1][trans]);               // not take
+                } else {
+                    // Sell allowed
+                    dp[i][trans] = max(prices[i] + dp[i + 1][trans + 1],   // take (sell)
+                                        dp[i + 1][trans]);                // not take
+                }
+            }
+        }
+
+        return dp[0][0]; // Start from day 0 and transaction state 0
+    }
 };
 int main() {
     Solution sol;
