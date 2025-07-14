@@ -61,23 +61,25 @@ public:
     }
 
     int knapsackSpaceOpt(int n, int W, vector<int>& wt, vector<int>& val) {
-        vector<int> prev(W + 1, 0), curr(W + 1, 0);
+        vector<int> dp(W + 1, 0);
 
-        for (int w = wt[0]; w <= W; ++w)
-            prev[w] = val[0];
-
-        for (int i = 1; i < n; ++i) {
-            for (int w = 0; w <= W; ++w) {
-                int notPick = prev[w];
-                int pick = 0;
-                if (wt[i] <= w)
-                    pick = val[i] + prev[w - wt[i]];
-                curr[w] = max(pick, notPick);
-            }
-            prev = curr;
+        // Initialize base case for the first item
+        for (int w = wt[0]; w <= W; ++w) {
+            dp[w] = val[0];
         }
 
-        return prev[W];
+        for (int i = 1; i < n; ++i) {
+            for (int w = W; w >= 0; --w) {
+                int notTake = dp[w];
+                int take = 0;
+                if (wt[i] <= w) {
+                    take = val[i] + dp[w - wt[i]];
+                }
+                dp[w] = max(take, notTake);
+            }
+        }
+
+        return dp[W];
     }
 
     // Unified call
