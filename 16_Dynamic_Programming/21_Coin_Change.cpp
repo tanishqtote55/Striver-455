@@ -127,3 +127,9 @@ int main() {
 
     return 0;
 }
+
+// | Approach        | Time Complexity | Space Complexity |
+// | --------------- | --------------- | ---------------- |
+// | Memoization     | O(n × amount)   | O(n × amount)    |
+// | Tabulation      | O(n × amount)   | O(n × amount)    |
+// | Space Optimized | O(n × amount)   | O(amount)        |
