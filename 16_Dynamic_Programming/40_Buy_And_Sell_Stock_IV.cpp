@@ -115,6 +115,27 @@ public:
         // 3. Space Optimization
         // return spaceOptimized(k, prices);
     }
+    // Tabulation (dp[n+1][2k+1])
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size();
+        if (n == 0) return 0;
+
+        vector<vector<int>> dp(n + 1, vector<int>(2 * k + 1, 0));
+
+        for (int i = n - 1; i >= 0; --i) {
+            for (int transNo = 0; transNo < 2 * k; ++transNo) {
+                if (transNo % 2 == 0) {
+                    // Buy allowed
+                    dp[i][transNo] = max(-prices[i] + dp[i + 1][transNo + 1], dp[i + 1][transNo]);
+                } else {
+                    // Sell allowed
+                    dp[i][transNo] = max(prices[i] + dp[i + 1][transNo + 1], dp[i + 1][transNo]);
+                }
+            }
+        }
+
+        return dp[0][0]; // Start at day 0 and transaction 0
+    }
 };
 
 int main() {
@@ -127,9 +148,13 @@ int main() {
 
     return 0;
 }
-
 // | Approach        | Time Complexity | Space Complexity |
 // | --------------- | --------------- | ---------------- |
 // | Memoization     | O(n × 2 × k)    | O(n × 2 × k)     |
 // | Tabulation      | O(n × 2 × k)    | O(n × 2 × k)     |
 // | Space Optimized | O(n × 2 × k)    | O(2 × k)         |
+
+// | Metric           | Value       |
+// | ---------------- | ----------- |
+// | Time Complexity  | `O(n * 2k)` |
+// | Space Complexity | `O(n * 2k)` |
