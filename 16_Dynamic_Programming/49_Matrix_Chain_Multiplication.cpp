@@ -51,16 +51,20 @@ public:
     // ---------- 2. TABULATION ----------
     int matrixMultiplicationTab(vector<int>& nums) {
         int n = nums.size();
+        // Create a dp table of size n x n and initialize with 0
         vector<vector<int>> dp(n, vector<int>(n, 0));
 
-        for (int len = 2; len < n; len++) {
-            for (int i = 1; i < n - len + 1; i++) {
-                int j = i + len - 1;
-                dp[i][j] = INT_MAX;
+        // Loop for chain length from 2 to n (length of subproblems)
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = i + 1; j < n; j++) {
+                int minCost = INT_MAX;
+
                 for (int k = i; k < j; k++) {
                     int cost = dp[i][k] + dp[k + 1][j] + nums[i - 1] * nums[k] * nums[j];
-                    dp[i][j] = min(dp[i][j], cost);
+                    minCost = min(minCost, cost);
                 }
+
+                dp[i][j] = minCost;
             }
         }
 
