@@ -81,3 +81,31 @@ int main() {
     cout << "Max Frequency: " << sol.maxFrequency(nums, k) << endl;
     return 0;
 }
+
+// Simple Algorithm (Step-by-Step):
+
+// Sort the array : Because it’s easier to make smaller numbers equal to bigger ones.
+
+// Use two pointers: left and right
+// This will create a window (a group of numbers you're checking).
+// The right end (nums[right]) is the target number you're trying to make everything equal to.
+
+// Keep a total sum of elements in the window.
+
+// For every element (move right pointer from left to right): Add nums[right] to total (expand the window).
+
+// Check if making all numbers in the window equal to nums[right] is possible:
+// Formula to check: nums[right] × window size ≤ total + 𝑘
+// If not possible, shrink the window from the left (subtract nums[left] from total and move left forward).
+
+// Keep track of the maximum window size (that means maximum number of elements made equal).
+
+// Return that maximum size.
+
+
+// Time Complexity:
+// Sorting: O(n log n)
+// Sliding window: O(n)
+// Total: O(n log n)
+// Space Complexity:
+// O(1) (ignoring sort space if done in-place)
