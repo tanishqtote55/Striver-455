@@ -75,3 +75,18 @@ int main()
 
     return 0;
 }
+
+// | i | nums\[i] | el (candidate) | cnt (votes) | Action                        |
+// | - | -------- | -------------- | ----------- | ----------------------------- |
+// | 0 | 2        | 2              | 1           | cnt = 0 → set el = 2, cnt = 1 |
+// | 1 | 2        | 2              | 2           | Same → cnt++                  |
+// | 2 | 1        | 2              | 1           | Different → cnt--             |
+// | 3 | 1        | 2              | 0           | Different → cnt--             |
+// | 4 | 1        | 1              | 1           | cnt = 0 → set el = 1, cnt = 1 |
+// | 5 | 2        | 1              | 0           | Different → cnt--             |
+// | 6 | 2        | 2              | 1           | cnt = 0 → set el = 2, cnt = 1 |
+
+// Every time we subtract a vote for a different element, we are canceling it out with a vote for the candidate.
+// If there is a true majority (more than n/2 times), it cannot be canceled out completely.
+// The candidate that survives this cancellation is the potential majority.
+// Final pass confirms it.
